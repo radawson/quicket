@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Quicket Development Deployment Script
+# Informejo Development Deployment Script
 # This script starts the application in development mode with PM2
 
 set -e  # Exit on any error
@@ -39,16 +39,16 @@ echo -e "${YELLOW}📁 Creating logs directory...${NC}"
 mkdir -p logs
 
 echo -e "${YELLOW}🔄 Stopping existing PM2 process (if any)...${NC}"
-pm2 delete quicket-dev 2>/dev/null || echo "No existing process to stop"
+pm2 delete informejo-dev 2>/dev/null || echo "No existing process to stop"
 
 echo -e "${YELLOW}🚀 Starting application in development mode with PM2...${NC}"
-pm2 start ecosystem.config.js --env development --name quicket-dev
+pm2 start ecosystem.config.js --env development --name informejo-dev
 
 echo -e "${GREEN}✅ Development deployment complete!${NC}"
 echo ""
 echo "Useful PM2 commands:"
-echo "  pm2 status              - Check application status"
-echo "  pm2 logs quicket-dev    - View application logs"
-echo "  pm2 restart quicket-dev - Restart the application"
-echo "  pm2 stop quicket-dev    - Stop the application"
+echo "  pm2 status                - Check application status"
+echo "  pm2 logs informejo-dev    - View application logs"
+echo "  pm2 restart informejo-dev - Restart the application"
+echo "  pm2 stop informejo-dev    - Stop the application"
 

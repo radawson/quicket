@@ -20,7 +20,7 @@ export async function seedDefaultAdmin() {
 
     // Create default admin
     const defaultAdmin = {
-      email: process.env.DEFAULT_ADMIN_EMAIL || 'admin@quicket.local',
+      email: process.env.DEFAULT_ADMIN_EMAIL || 'admin@informejo.local',
       password: process.env.DEFAULT_ADMIN_PASSWORD || 'ChangeMe123!',
       name: process.env.DEFAULT_ADMIN_NAME || 'System Administrator',
     }

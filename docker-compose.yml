@@ -3,15 +3,15 @@ services:
     image: postgres:18
     restart: always
     environment:
-      POSTGRES_DB: quicket
-      POSTGRES_USER: quicket
+      POSTGRES_DB: informejo
+      POSTGRES_USER: informejo
       POSTGRES_PASSWORD: PASSword01!!
     ports:
       - "5432:5432"
     volumes:
-      - db_data:/var/lib/postgresql # Changed for PostgreSQL 18+ compatibility
+      - db_data:/var/lib/postgresql 
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U quicket -d quicket"]
+      test: ["CMD-SHELL", "pg_isready -U informejo -d informejo"]
       interval: 5s
       timeout: 5s
       retries: 5

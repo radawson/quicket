@@ -1,6 +1,6 @@
-# Quicket Deployment Guide
+# Informejo Deployment Guide
 
-This guide explains how to deploy Quicket to production using PM2.
+This guide explains how to deploy Informejo to production using PM2.
 
 ## Prerequisites
 
@@ -48,12 +48,12 @@ Simply run the deployment script:
 ```
 
 This script will:
-1. Start Docker containers (if docker-compose.yml exists)
-2. Install dependencies
-3. Build the application
-4. Clean up dev dependencies
-5. Run database migrations
-6. Start the application with PM2
+
+1. Install dependencies
+2. Build the application
+3. Clean up dev dependencies
+4. Run database migrations
+5. Start the application with PM2
 
 ### Option 2: Manual Deployment
 

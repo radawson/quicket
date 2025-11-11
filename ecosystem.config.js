@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'quicket',
+      name: 'informejo',
       script: 'npm',
       args: 'start',
       cwd: __dirname,

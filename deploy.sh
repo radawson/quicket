@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Quicket Deployment Script
+# Informejo Deployment Script
 # This script builds and deploys the application to PM2
 
 set -e  # Exit on any error
@@ -42,7 +42,7 @@ echo -e "${YELLOW}📁 Creating logs directory...${NC}"
 mkdir -p logs
 
 echo -e "${YELLOW}🔄 Stopping existing PM2 process (if any)...${NC}"
-pm2 delete quicket 2>/dev/null || echo "No existing process to stop"
+pm2 delete informejo 2>/dev/null || echo "No existing process to stop"
 
 echo -e "${YELLOW}🚀 Starting application with PM2...${NC}"
 pm2 start ecosystem.config.js
@@ -56,9 +56,9 @@ pm2 startup systemd -u $USER --hp $HOME || echo "PM2 startup already configured"
 echo -e "${GREEN}✅ Deployment complete!${NC}"
 echo ""
 echo "Useful PM2 commands:"
-echo "  pm2 status          - Check application status"
-echo "  pm2 logs quicket    - View application logs"
-echo "  pm2 restart quicket - Restart the application"
-echo "  pm2 stop quicket    - Stop the application"
-echo "  pm2 monit           - Monitor application"
+echo "  pm2 status            - Check application status"
+echo "  pm2 logs informejo    - View application logs"
+echo "  pm2 restart informejo - Restart the application"
+echo "  pm2 stop informejo    - Stop the application"
+echo "  pm2 monit             - Monitor application"
 

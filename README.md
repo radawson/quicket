@@ -41,7 +41,7 @@ A modern, full-featured IT support ticket management system built with Next.js, 
 
 ## Tech Stack
 
-- **Frontend/Backend**: Next.js 14 (App Router)
+- **Frontend/Backend**: Next.js 16 (App Router)
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
 - **Database**: PostgreSQL
@@ -57,14 +57,14 @@ A modern, full-featured IT support ticket management system built with Next.js, 
 - Node.js 18+ and npm
 - PostgreSQL 14+
 - Keycloak server (for admin SSO)
-- SMTP server (for email notifications)
+- SMTP server (optional for email notifications)
 
 ## Quick Start
 
 ### 1. Clone and Install
 
 ```bash
-cd /path/to/tickets
+cd /path/to/informejo
 npm install
 ```
 
