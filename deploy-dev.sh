@@ -26,8 +26,11 @@ if [ ! -f .env ]; then
     exit 1
 fi
 
-# Stand up docker container
-docker compose up -d
+# Check if docker-compose.yml exists and start containers
+if [ -f docker-compose.yml ]; then
+    echo -e "${YELLOW}🐳 Starting Docker containers...${NC}"
+    docker compose up -d
+fi
 
 echo -e "${YELLOW}📦 Installing dependencies...${NC}"
 npm install
