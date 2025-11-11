@@ -29,7 +29,7 @@ A modern, full-featured IT support ticket management system built with Next.js, 
 - ✅ Switch between admin and user views
 
 ### Technical Features
-- 🔐 Dual authentication: Credentials (users) + Keycloak OIDC (admins)
+- 🔐 Dual authentication: Local Credentials or Keycloak OIDC
 - 🔄 Real-time updates with Socket.io
 - 📧 Email notifications with Nodemailer
 - 📁 File upload support with local storage
