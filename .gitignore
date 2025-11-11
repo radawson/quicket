@@ -76,3 +76,7 @@ Thumbs.db
 # test
 jest-coverage/
 .jest-cache/
+
+# PM2 logs
+/logs/
+*.log
