@@ -6,7 +6,6 @@
  */
 
 const { createServer } = require('http')
-const { parse } = require('url')
 const next = require('next')
 const { Server } = require('socket.io')
 
@@ -22,8 +21,22 @@ app.prepare().then(() => {
   // Create HTTP server
   const httpServer = createServer(async (req, res) => {
     try {
-      const parsedUrl = parse(req.url, true)
-      await handle(req, res, parsedUrl)
+      // Use WHATWG URL API instead of deprecated url.parse()
+      // Next.js handle expects an object with pathname and query
+      const url = req.url || '/'
+      const baseUrl = `http://${req.headers.host || 'localhost'}`
+      const parsedUrl = new URL(url, baseUrl)
+      
+      // Convert to format Next.js expects
+      const query = {}
+      parsedUrl.searchParams.forEach((value, key) => {
+        query[key] = value
+      })
+      
+      await handle(req, res, {
+        pathname: parsedUrl.pathname,
+        query: query,
+      })
     } catch (err) {
       console.error('Error occurred handling', req.url, err)
       res.statusCode = 500

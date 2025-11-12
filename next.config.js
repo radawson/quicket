@@ -13,8 +13,7 @@ const nextConfig = {
       },
     ],
   },
-  // For self-hosting with nginx
-  output: 'standalone',
+  // Note: output: 'standalone' is not used because we have a custom server.js with Socket.IO
 }
 
 module.exports = nextConfig
