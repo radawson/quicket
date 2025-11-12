@@ -87,13 +87,27 @@ export default function PriorityPieChart({ data, size = 120 }: PriorityPieChartP
       >
         {segments.map((segment, index) => (
           <g key={index}>
-            <path
-              d={segment.path}
-              fill={segment.color}
-              className="hover:opacity-80 transition-opacity cursor-pointer"
-            >
-              <title>{`${segment.key}: ${segment.value} (${segment.percentage}%)`}</title>
-            </path>
+            {segment.percentage >= 99 ? (
+              // Render as full circle when it's 100% (or very close)
+              <circle
+                cx="50"
+                cy="50"
+                r="50"
+                fill={segment.color}
+                className="hover:opacity-80 transition-opacity cursor-pointer"
+              >
+                <title>{`${segment.key}: ${segment.value} (${segment.percentage}%)`}</title>
+              </circle>
+            ) : (
+              // Render as arc path for partial segments
+              <path
+                d={segment.path}
+                fill={segment.color}
+                className="hover:opacity-80 transition-opacity cursor-pointer"
+              >
+                <title>{`${segment.key}: ${segment.value} (${segment.percentage}%)`}</title>
+              </path>
+            )}
           </g>
         ))}
         {/* Center circle for donut effect */}
