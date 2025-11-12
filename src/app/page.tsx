@@ -1,8 +1,29 @@
+'use client'
+
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Ticket, LogIn, Send } from 'lucide-react'
+import { Ticket, LogIn, Send, Search } from 'lucide-react'
+import toast from 'react-hot-toast'
 
 export default function Home() {
+  const router = useRouter()
+  const [magicToken, setMagicToken] = useState('')
+  const [isChecking, setIsChecking] = useState(false)
+
+  const handleCheckTicket = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!magicToken.trim()) {
+      toast.error('Please enter your ticket access code')
+      return
+    }
+
+    setIsChecking(true)
+    // Navigate to the ticket view page with the token
+    router.push(`/tickets/view/${magicToken.trim()}`)
+  }
+
   return (
     <div className="min-h-screen bg-linear-to-br from-primary-50 to-primary-100">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -22,7 +43,7 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {/* Submit Ticket Card */}
           <div className="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition-shadow">
             <div className="flex justify-center mb-6">
@@ -45,6 +66,42 @@ export default function Home() {
             </Link>
             <p className="text-sm text-gray-500 mt-4 text-center">
               No account required
+            </p>
+          </div>
+
+          {/* Check Ticket Status Card */}
+          <div className="bg-white rounded-lg shadow-lg p-8 hover:shadow-xl transition-shadow">
+            <div className="flex justify-center mb-6">
+              <div className="bg-primary-100 rounded-full p-6">
+                <Search className="h-12 w-12 text-primary-600" />
+              </div>
+            </div>
+            <h2 className="text-2xl font-bold text-gray-900 mb-4 text-center">
+              Check Ticket Status
+            </h2>
+            <p className="text-gray-600 mb-6 text-center">
+              Enter your ticket access code from the email we sent you to view your ticket status and updates.
+            </p>
+            <form onSubmit={handleCheckTicket} className="space-y-4">
+              <input
+                type="text"
+                value={magicToken}
+                onChange={(e) => setMagicToken(e.target.value)}
+                placeholder="Enter your access code"
+                className="input w-full text-center font-mono"
+                disabled={isChecking}
+              />
+              <button
+                type="submit"
+                className="btn btn-secondary w-full flex items-center justify-center gap-2"
+                disabled={isChecking}
+              >
+                <Search size={20} />
+                {isChecking ? 'Checking...' : 'View Ticket'}
+              </button>
+            </form>
+            <p className="text-sm text-gray-500 mt-4 text-center">
+              Check your email for the access code
             </p>
           </div>
 
