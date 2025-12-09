@@ -60,14 +60,17 @@ A modern, full-featured IT support ticket management system built with Next.js, 
 - Keycloak server (for admin SSO)
 - SMTP server (optional for email notifications)
 
-### Important Security Update
+### ✅ Security: CVE-2025-55182 Patched
 
-This project has been updated to address **CVE-2025-55182** (React2Shell vulnerability) which affects React 19 and Next.js 16. The updates include:
+**This project has been patched and is no longer vulnerable to CVE-2025-55182 (React2Shell).**
 
-- **Next.js**: Updated to v16.0.7+ (fixes CVE-2025-66478)
-- **React**: Updated to v19.0.1+ (fixes CVE-2025-55182)
-- **Prisma ORM**: Upgraded to v7.x (required for compatibility)
+The critical security vulnerability affecting React 19 and Next.js 16 has been addressed with the following updates:
+
+- **Next.js**: Updated to v16.0.8 ✅ (fixes CVE-2025-66478)
+- **React**: Updated to v19.2.1 ✅ (fixes CVE-2025-55182)
+- **Prisma ORM**: Upgraded to v7.1.0 (required for compatibility)
 - **Node.js**: Minimum version now 20.19.0 (required for Prisma 7)
+- **Status**: Zero npm audit vulnerabilities ✅
 
 For more information:
 - [React2Shell Security Bulletin](https://vercel.com/changelog/cve-2025-55182)
@@ -325,6 +328,26 @@ npx prisma studio
 npm run lint
 ```
 
+### Version Management
+
+This project uses semantic versioning. To increment versions:
+
+```bash
+# Increment patch version (1.0.9 -> 1.0.10)
+npm run version-patch
+
+# Increment minor version (1.0.9 -> 1.1.0)
+npm run version-minor
+
+# Increment major version (1.0.9 -> 2.0.0)
+npm run version-major
+```
+
+These commands will:
+1. Update the version in `package.json` and `package-lock.json`
+2. Create a git commit with the version change
+3. Create a git tag for the version
+
 ## Features in Detail
 
 ### Real-time Updates
@@ -489,13 +512,16 @@ Proprietary - Internal use only
 
 ## Changelog
 
-### Version 1.0.7 (December 2025)
-- **Security**: Updated to Next.js 16.0.8 to address CVE-2025-55182 (React2Shell vulnerability)
-- **Security**: Updated to React 19.2.1 to address CVE-2025-55182
+### Version 1.0.9 (December 2025) - Security Patch
+- **Security**: ✅ **PATCHED** CVE-2025-55182 (React2Shell vulnerability)
+- **Security**: Updated to Next.js 16.0.8 (fixes CVE-2025-66478)
+- **Security**: Updated to React 19.2.1 (fixes CVE-2025-55182)
 - **Breaking**: Upgraded to Prisma ORM 7.x (requires Node.js 20.19+ or 22.12+)
 - **Breaking**: Prisma client now generated to `src/generated/prisma/` instead of `node_modules`
 - **Breaking**: Minimum Node.js version increased to 20.19.0 or 22.12+
+- Added npm scripts for semantic versioning (`npm run version-major/minor/patch`)
 - Updated all dependencies to latest compatible versions
+- Zero npm audit vulnerabilities
 
 ### Version 1.0.0 (Initial Release)
 - User registration and authentication
@@ -509,5 +535,4 @@ Proprietary - Internal use only
 
 ---
 
-Built with ❤️ for efficient IT support management
 

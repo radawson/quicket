@@ -1,6 +1,10 @@
 # Upgrade Guide: CVE-2025-55182 & Prisma 7
 
+## ✅ Current Version: 1.0.9 (Patched)
+
 This guide covers upgrading the Informejo project to address the React2Shell security vulnerability (CVE-2025-55182) and the required Prisma 7 upgrade.
+
+**Status**: All security vulnerabilities have been patched in version 1.0.9.
 
 ## What Changed
 
